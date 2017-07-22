@@ -192,4 +192,51 @@ public class Athlete extends HttpServlet {
         writer.print("</html>");
         writer.close();
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Connection connection = DbUtil.getConnection();
+
+        int athleteOrgId = 0;
+        PreparedStatement ps = null;
+        String param = new String(req.getParameter("club").getBytes("ISO-8859-1"), "UTF-8");
+        ResultSet rs = null;
+        try {
+            ps = connection.prepareStatement("SELECT org_id FROM organization WHERE org_name = '" + param + "'");
+            rs = ps.executeQuery();
+            rs.next();
+            athleteOrgId = rs.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        int athleteTrainerId = 0;
+        String param2 = new String(req.getParameter("trainer").getBytes("ISO-8859-1"), "UTF-8");
+        try {
+            ps = connection.prepareStatement("SELECT trainer_id FROM trainer WHERE trainer_name = '" + param2 + "'");
+            rs = ps.executeQuery();
+            rs.next();
+            athleteTrainerId = rs.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            ps = connection.prepareStatement("INSERT INTO athlete (athlete_name, dob, nationality, org_id, trainer_id)\n" +
+                    "VALUES ('" + req.getParameter("athletename") + "', '" + req.getParameter("dob") + "', '" +
+                    req.getParameter("nationality") + "', '" + Integer.toString(athleteOrgId) +
+                    "', '" + Integer.toString(athleteTrainerId) + "')");
+            ps.executeUpdate();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        PrintWriter writer = resp.getWriter();
+        resp.setContentType("text/html");
+        writer.print("<html>");
+        writer.print("<body>");
+        writer.print("<a href=\"index.html\">Vissza a főoldalra</a>");
+
+    }
 }
