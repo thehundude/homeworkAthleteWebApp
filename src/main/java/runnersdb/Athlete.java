@@ -237,6 +237,8 @@ public class Athlete extends HttpServlet {
         writer.print("<html>");
         writer.print("<body>");
         writer.print("<a href=\"index.html\">Vissza a főoldalra</a>");
-
+        writer.print("</body>");
+        writer.print("</html>");
+        writer.close();
     }
 }
