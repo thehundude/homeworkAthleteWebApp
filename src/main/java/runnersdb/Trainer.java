@@ -178,5 +178,9 @@ public class Trainer extends HttpServlet {
             writer.print("; I. helyek: " + trainers.get(i).getCountFirst() + "; II. helyek: " + trainers.get(i).getCountSecond() +
             "; III. helyek: " + trainers.get(i).getCountThird());
         }
+
+        writer.print("</body>");
+        writer.print("</html>");
+        writer.close();
     }
 }
