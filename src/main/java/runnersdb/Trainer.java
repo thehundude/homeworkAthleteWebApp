@@ -176,7 +176,7 @@ public class Trainer extends HttpServlet {
             //System.out.print(trainers.get(i).getCountFirst() + "\t" + trainers.get(i).getCountSecond() + "\t" +
             //        trainers.get(i).getCountThird() + "\n");
             writer.print("; I. helyek: " + trainers.get(i).getCountFirst() + "; II. helyek: " + trainers.get(i).getCountSecond() +
-            "; III. helyek: " + trainers.get(i).getCountThird());
+            "; III. helyek: " + trainers.get(i).getCountThird() + "</p>");
         }
 
         writer.print("</body>");

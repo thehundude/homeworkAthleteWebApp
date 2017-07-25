@@ -30,4 +30,12 @@
         <servlet-name>Trainers</servlet-name>
         <url-pattern>/trainer</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>Athletes3</servlet-name>
+        <servlet-class>runnersdb.Athlete3</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Athletes3</servlet-name>
+        <url-pattern>/clubathlete3</url-pattern>
+    </servlet-mapping>
 </web-app>
