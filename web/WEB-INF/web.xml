@@ -21,4 +21,13 @@
         <servlet-name>Club Athletes 2</servlet-name>
         <url-pattern>/clubathlete2</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <display-name>Trainers</display-name>
+        <servlet-name>Trainers</servlet-name>
+        <servlet-class>runnersdb.Trainer</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Trainers</servlet-name>
+        <url-pattern>/trainer</url-pattern>
+    </servlet-mapping>
 </web-app>
