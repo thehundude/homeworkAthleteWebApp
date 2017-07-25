@@ -187,10 +187,13 @@ public class Athlete3 extends HttpServlet {
             }
         });
 
-        for (int i = 0; i < athletes.size(); i++) {
-            /* System.out.print(athletes.get(i).athleteName + "\t" + athletes.get(i).dob + "\t" + athletes.get(i).nationality +
-                    "\t" + athletes.get(i).firstPlace + "\t" + athletes.get(i).secondPlace + "\t" +
-                    athletes.get(i).thirdPlace + "\n"); */
+        Integer num = new Integer(req.getParameter("athletenumber"));
+
+        if (num > athletes.size()) {
+            num = athletes.size();
+        }
+
+        for (int i = 0; i < num; i++) {
             writer.print("<p>Futó neve: " + athletes.get(i).athleteName + "; születési idő: " + athletes.get(i).dob +
             "; nemzetisége: " + athletes.get(i).nationality + "; I. helyek:" + athletes.get(i).firstPlace + "; II. helyek: " +
             athletes.get(i).secondPlace + "; III. helyek: " + athletes.get(i).thirdPlace + "</p>");
